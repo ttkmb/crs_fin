@@ -2,12 +2,13 @@ import json
 
 
 def get_posts_all():  # вывод всех постов
-    with open('data/data.json', 'r', encoding='utf8') as f:
-        file = json.load(f)
-        return file
+    with open('data/data.json', 'r', encoding='UTF-8') as f:
+        data = json.load(f)
+        return data
 
 
 #print(get_posts_all())
+
 
 def get_posts_by_user(user_name):  # вывод постов определенного пользователя
     with open('data/data.json', 'r', encoding='utf8') as f:
@@ -31,10 +32,8 @@ def get_comments_by_post_id(post_id):
             comments.append(comment['comment'])
     return comments
 
-#print(get_comments_by_post_id(2))
 
-
-
+# print(get_comments_by_post_id(2))
 
 
 def search_for_posts(query):
@@ -47,15 +46,14 @@ def search_for_posts(query):
             search_list.append(post)
     return search_list
 
-#print(search_for_posts('днем'))
+
+# print(search_for_posts('днем'))
 
 
-
-
-def get_post_by_pk(pk):  #вывод поста по его идентификатору
+def get_post_by_pk(pk):  # вывод поста по его идентификатору
     posts = get_posts_all()
     for post in posts:
         if post['pk'] == pk:
             return post
 
-#print(get_post_by_pk(2))
+# print(get_post_by_pk(2))
