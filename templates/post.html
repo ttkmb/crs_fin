@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SKYPROGRAM post</title>
-  <link href="../static/css/styles.min.css" rel="stylesheet">
+  <link href="{{ url_for('static', filename='css/styles.min.css') }}" rel="stylesheet">
 </head>
 
 <body>
@@ -47,10 +47,10 @@
         </div>
         <div class="item__bottom">
           <div class="item__post-info">
-            <p class="item__comments-counter">{{len_comm}} Комментариев: </p>
+            <p class="item__comments-counter"> Комментариев: </p>
             <div class="item__counter">
-              <img src="../static/img/eye.png" alt="" class="item__counter-icon" width="26">
-              <span class="item__counter-text">{{ post.views_count }}</span>
+              <img src="/static/img/eye.png" alt="" class="item__counter-icon" width="26">
+              <span class="item__counter-text">{{ comments | length }}</span>
             </div>
           </div>
           <div class="item__comments">

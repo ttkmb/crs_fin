@@ -1,7 +1,7 @@
 from flask import Flask, request, render_template
 from utils import get_posts_all, get_posts_by_user, get_comments_by_post_id, search_for_posts, get_post_by_pk
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder="static", template_folder="templates")
 
 posts = get_posts_all()
 
@@ -11,12 +11,12 @@ def index():
     return render_template('index.html', posts=posts)
 
 
-@app.route('/posts/<int:post_id>')
+@app.route('/posts/<int:post_id>/')
 def post(post_id):
     post = get_post_by_pk(post_id)
-    # comments = get_comments_by_post_id(p)
+    comments = get_comments_by_post_id(post_id)
 
-    return render_template('post.html', post=post)
+    return render_template('post.html', post=post, comments=comments)
 
 
 @app.route('/search/')
