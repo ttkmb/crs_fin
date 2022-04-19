@@ -1,5 +1,5 @@
 from flask import Flask, jsonify
-from utils import get_posts_all, get_posts_by_user, get_comments_by_post_id, search_for_posts, get_post_by_pk
+from utils import get_posts_all, get_post_by_pk
 
 
 api = Flask(__name__)
@@ -13,11 +13,10 @@ def show_posts():
 
 
 @api.route('/api/posts/<int:pk>', methods=['GET'])
-def show_post_by_id(pk):
-    posts = get_posts_all()
-    for post in posts:
-        if post['pk'] == pk:
-            return jsonify(post)
+def show_post_by_pk(pk):
+    posts = get_post_by_pk(pk)
+    return jsonify(posts)
+
 
 
 if __name__ == '__main__':
